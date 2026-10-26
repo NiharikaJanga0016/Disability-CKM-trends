@@ -4,8 +4,8 @@
 * Run this first. Edit ROOT only (the ROOT line below), then run:  do 00_config.do
 *
 * Expected folder layout under ROOT:
-*   ROOT/raw/         NHANES .xpt files downloaded from CDC (not in this repository)
-*   ROOT/harmonized/  nhanes_harmonized_primary_v2.dta (created by 01_harmonization.do)
+*   ROOT/raw/         (optional) NHANES .xpt files downloaded from CDC
+*   ROOT/harmonized/  nhanes_harmonized_primary_v2.dta (included in this repository)
 *   ROOT/results/     logs and output files are written here
 *=============================================================================
 
