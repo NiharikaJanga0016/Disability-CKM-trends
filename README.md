@@ -6,7 +6,7 @@ The analysis uses public-use data from the National Health and Nutrition Examina
 
 ## Data
 
-The harmonized analysis dataset (`harmonized/nhanes_harmonized_primary_v2.dta`) is included in this repository. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/.
+The harmonized analysis dataset (`NHANES_Harmonized_data.dta`) is included in this repository. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/.
 
 ## Requirements
 
