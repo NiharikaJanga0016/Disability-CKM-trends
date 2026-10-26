@@ -6,7 +6,7 @@ The analysis uses public-use data from the National Health and Nutrition Examina
 
 ## Data
 
-No data are included in this repository. NHANES files are public and available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/. Download the demographic, examination, laboratory, questionnaire and medication files for each cycle as SAS transport (`.xpt`) files and save them in `raw/`.
+The harmonized analysis dataset (`harmonized/nhanes_harmonized_primary_v2.dta`) is included in this repository. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/.
 
 ## Requirements
 
@@ -14,15 +14,14 @@ Stata 17 or later. All estimates use the survey commands (`svy`) with examinatio
 
 ## How to run
 
-1. Open `00_config.do`, set `ROOT` to your NHANES folder, and run it.
-2. Run `01_harmonization.do` once to build the analysis dataset from the raw files.
-3. Run the remaining scripts in numerical order. Each script is self-contained, starts from the harmonized dataset, and writes its log to `results/`.
+1. Download or clone this repository.
+2. Open `00_config.do`, set `ROOT` to the repository folder, and run it.
+3. Run the scripts in numerical order. Each script starts from the harmonized dataset and writes its log to `results/`.
 
 ## Scripts
 
 | Script | Manuscript item |
 |---|---|
-| `01_harmonization.do` | Builds the analysis dataset from raw NHANES files |
 | `02_table1_characteristics.do` | Table 1 |
 | `03_table2_prevalence_trends.do` | Table 2, Supplemental Table S1 |
 | `04_table3_treatment_control.do` | Table 3, Supplemental Table S2 |
