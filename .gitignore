@@ -1,0 +1,13 @@
+# NHANES data (public, but download from CDC rather than redistribute)
+*.xpt
+*.XPT
+*.dta
+
+# Stata logs and temporary files
+*.smcl
+*.log
+*.gph
+*.tmp
+
+# macOS
+.DS_Store
