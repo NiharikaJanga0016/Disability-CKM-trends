@@ -181,7 +181,8 @@ gsort rank
 gen fdr_sig    = (bh_adj_p_mono < 0.05)
 gen borderline = (raw_p < 0.05 & bh_adj_p_mono >= 0.05)
 
-format PR ll ul %6.3f
+* PR and confidence limits are printed to 4 decimals; the tables report 3
+format PR ll ul %6.4f
 format raw_p bh_adj_p_mono %10.4g
 di "===== All 44 tests, ordered by raw p (rank) ====="
 list rank domain outcome era PR ll ul raw_p bh_adj_p_mono fdr_sig borderline, noobs
