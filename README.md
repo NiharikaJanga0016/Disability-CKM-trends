@@ -8,35 +8,35 @@ The analysis uses public-use data from the National Health and Nutrition Examina
 
 The harmonized analysis dataset (`NHANES_Harmonized_data.dta`) is included in this repository. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/.
 
+Two variables in the dataset carry older labels that do not match the analysis. `hyperlipid_controlled` and `joint_ctrl_all3` are labelled with a non-HDL cholesterol threshold of <160 mg/dL. The scripts do not use them. They use `lipid_controlled` (non-HDL cholesterol <130 mg/dL) and construct joint control of all three conditions from `dm_controlled`, `htn_controlled` and `lipid_controlled`.
+
 ## Requirements
 
-Stata 17 or later. All estimates use the survey commands (`svy`) with examination weights, strata (SDMVSTRA) and PSU (SDMVPSU), and `singleunit(centered)`.
+Stata 17 or later. All estimates use the survey commands (`svy`) with examination weights, strata (SDMVSTRA) and PSU (SDMVPSU), and `singleunit(centered)`. The multiple imputation script uses Stata's `mi` commands.
 
 ## How to run
 
 1. Download or clone this repository.
 2. Open `00_config.do`, set `ROOT` to the repository folder, and run it.
-3. Run the scripts in numerical order. Each script starts from the harmonized dataset and writes its log to `results/`.
+3. Run any script below. Each script starts from the harmonized dataset and writes its log and result files to `results/`. The scripts do not depend on one another, so they can be run in any order after `00_config.do`.
+
+Weights: the PFQ era (cycles 1-7) uses `wt_pfq` and the DLQ era (cycles 8-10) uses `wt_dlq`. Pooled and per-cycle age-standardized estimates use the examination weight `wtmec2yr`.
 
 ## Scripts
 
 | Script | Manuscript item |
 |---|---|
+| `00_config.do` | Sets file paths (run first) |
 | `02_table1_characteristics.do` | Table 1 |
 | `03_table2_prevalence_trends.do` | Table 2, Supplemental Table S1 |
-| `04_table3_treatment_control.do` | Table 3, Supplemental Table S2 |
-| `05_table3_joint_control_trends.do` | Table 3 (joint control trends) |
-| `06_table3_unweighted_n.do` | Unweighted N for Table 3 and Table S2 |
-| `supplement/s3_comparator_disability.do` | Supplemental Table S3 (disability group) |
-| `supplement/s3_comparator_nondisabled.do` | Supplemental Table S3 (non-disabled group) |
+| `04_table3_treatment_control.do` | Table 3 (treatment and control), Supplemental Table S2, unweighted N |
+| `supplement/s3_comparator.do` | Supplemental Table S3 (adults with and without disability) |
 | `supplement/s4_comorbidity.do` | Supplemental Table S4 |
-| `supplement/s5_fdr_correction.do` | Supplemental Table S5 (false discovery rate) |
-| `supplement/s6a_age_group_sensitivity.do` | Supplemental Table S6a |
-| `supplement/s6d_mobility_definition.do` | Supplemental Table S6d |
+| `supplement/s5_fdr_correction.do` | Supplemental Table S5 (Benjamini-Hochberg false discovery rate) |
+| `supplement/s6_sensitivity_analyses.do` | Supplemental Table S6 (S6a to S6d) |
 | `supplement/s7_segmented_trends.do` | Supplemental Table S7 |
-| `supplement/s8_evalues.do` | E-values |
-| `supplement/s9_adjusted_trends.do` | Supplemental Tables S9a, S9c, S9d |
-| `supplement/s9_insurance_sensitivity.do` | Supplemental Tables S9b, S9e |
+| `supplement/s8_evalues.do` | Supplemental Table S8 and Supplemental Figure S3 (E-values) |
+| `supplement/s9_adjusted_trends.do` | Supplemental Table S9 (S9a to S9e) |
 | `supplement/s10_multiple_imputation_alcohol.do` | Supplemental Table S10 |
 
 ## Citation
