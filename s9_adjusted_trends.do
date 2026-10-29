@@ -17,8 +17,10 @@
 *   S9d  DLQ era, cycles 8-10 (2013-2018), with insurance covariate
 *   S9e  PFQ era, cycles 4-7, same sample as S9b, no insurance covariate
 *
-* Weights: wt_pfq (PFQ era) and wt_dlq (DLQ era). N is Stata's e(N), the sample
-* after listwise deletion on every covariate in the model.
+* Weights: wt_pfq (PFQ era) and wt_dlq (DLQ era). N is the number of
+* participants with a positive examination weight and complete data on every
+* covariate in the model. Stata's e(N) (printed as n_eN) is larger because it
+* also counts interview-only participants with zero examination weight.
 * Outcomes: n_rf is the number of risk factors (count outcome);
 * lipid_treated is statin use.
 * Design: strata SDMVSTRA, PSU SDMVPSU, singleunit(centered).
@@ -79,16 +81,22 @@ foreach p in a b c d e {
     if `same_`p'' == 1 local cond "`cond' & insured!=."
 
     tempname res
-    postfile `res' str20 outcome double PR ll ul p n ///
+    postfile `res' str20 outcome double PR ll ul p n n_eN ///
         using s9`p'_results, replace
 
     foreach outcome of local outcomes {
         quietly svy: poisson `outcome' c.cycle_ord i.age_grp i.riagendr ///
             i.ridreth1 i.educ3 i.marital3 i.ipir_cat smoking bmxbmi ///
             `insvar' if `cond'
-        local nobs = e(N)
+        * Stata's e(N) also counts interview-only participants with zero
+        * examination weight, who contribute nothing to the estimates.
+        * N reported here = participants in the model with positive weight.
+        local nobs_eN = e(N)
+        quietly count if e(sample) & `wt_`p'' > 0
+        local nobs = r(N)
         quietly lincom cycle_ord, eform
-        post `res' ("`outcome'") (r(estimate)) (r(lb)) (r(ub)) (r(p)) (`nobs')
+        post `res' ("`outcome'") (r(estimate)) (r(lb)) (r(ub)) (r(p)) ///
+            (`nobs') (`nobs_eN')
     }
     postclose `res'
 
@@ -96,7 +104,7 @@ foreach p in a b c d e {
     use s9`p'_results, clear
     format PR ll ul %6.3f
     format p %7.4f
-    format n %9.0fc
+    format n n_eN %9.0fc
     di _n "===== S9`p': cycles `lo_`p''-`hi_`p'', insurance covariate = `ins_`p'', same sample = `same_`p'' ====="
     list, noobs
     restore
