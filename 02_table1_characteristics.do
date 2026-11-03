@@ -80,7 +80,7 @@ svy, subpop(ins_c410): logistic insured disability
 *-----------------------------------------------------------------------------
 * C. Unweighted N for the insurance row
 *-----------------------------------------------------------------------------
-count if ins_c410==1
-di "N with insurance data, cycles 4-10: " r(N)
+count if ins_c410==1 & wtmec2yr>0 & wtmec2yr<.
+di "N with insurance data and positive exam weight, cycles 4-10: " r(N)
 
 log close
