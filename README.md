@@ -30,14 +30,14 @@ Weights: the PFQ era (cycles 1-7) uses `wt_pfq` and the DLQ era (cycles 8-10) us
 | `02_table1_characteristics.do` | Table 1 |
 | `03_table2_prevalence_trends.do` | Table 2, Supplemental Table S1 |
 | `04_table3_treatment_control.do` | Table 3 (treatment and control), Supplemental Table S2, unweighted N |
-| `supplement/s3_comparator.do` | Supplemental Table S3 (adults with and without disability) |
-| `supplement/s4_comorbidity.do` | Supplemental Table S4 |
-| `supplement/s5_fdr_correction.do` | Supplemental Table S5 (Benjamini-Hochberg false discovery rate) |
-| `supplement/s6_sensitivity_analyses.do` | Supplemental Table S6 (S6a to S6d) |
-| `supplement/s7_segmented_trends.do` | Supplemental Table S7 |
-| `supplement/s8_evalues.do` | Supplemental Table S8 and Supplemental Figure S3 (E-values) |
-| `supplement/s9_adjusted_trends.do` | Supplemental Table S9 (S9a to S9e) |
-| `supplement/s10_multiple_imputation_alcohol.do` | Supplemental Table S10 |
+| `s3_comparator.do` | Supplemental Table S3 (adults with and without disability) |
+| `s4_comorbidity.do` | Supplemental Table S4 |
+| `s5_fdr_correction.do` | Supplemental Table S5 (Benjamini-Hochberg false discovery rate) |
+| `s6_sensitivity_analyses.do` | Supplemental Table S6 (S6a to S6d) |
+| `s7_segmented_trends.do` | Supplemental Table S7 |
+| `s8_evalues.do` | Supplemental Table S8 and Supplemental Figure S3 (E-values) |
+| `s9_adjusted_trends.do` | Supplemental Table S9 (S9a to S9e) |
+| `s10_multiple_imputation_alcohol.do` | Supplemental Table S10 |
 
 ## Citation
 
