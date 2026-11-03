@@ -17,6 +17,8 @@
 *         joint DM+HTN control (adjusted model) and joint all-3 control (crude
 *         model, unadjusted).
 * Part D: unweighted N by cycle for every denominator in Table 3 and Table S2.
+* These are eligible denominator counts and include interview-only participants
+* with zero examination weight; examined counts are smaller.
 * Design: strata SDMVSTRA, PSU SDMVPSU, singleunit(centered).
 *=============================================================================
 
@@ -205,6 +207,8 @@ di "DLQ: PR=" %6.3f r(estimate) " (" %6.3f r(lb) "-" %6.3f r(ub) ")  p=" %6.3f r
 
 *=============================================================================
 * PART D: Unweighted N by cycle (adults with disability), Table 3 / S2
+* Eligible denominator counts; include interview-only participants
+* with zero examination weight; examined counts are smaller.
 * Columns are cycles 1 to 10.
 *=============================================================================
 use `base', clear
