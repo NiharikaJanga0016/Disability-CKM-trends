@@ -6,7 +6,7 @@ The analysis uses public-use data from the National Health and Nutrition Examina
 
 ## Data
 
-The harmonized analysis dataset (`NHANES_Harmonized_data.dta`) is included in this repository. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/.
+The harmonized analysis dataset (`NHANES_Harmonized_data.dta`) is included in this repository. The file retains all 101,316 original participant rows and 139 variables; analysis variables are missing for participants excluded from the eligible sample, leaving the 53,540 adults analyzed. It contains only variables from public-use NHANES files (CDC/NCHS) and variables derived from them; definitions are in the manuscript Supplement. Use of the data is subject to the NCHS Data User Agreement: https://www.cdc.gov/nchs/policy/data-user-agreement.html. The original files are available from the CDC: https://wwwn.cdc.gov/nchs/nhanes/. This repository reproduces the analyses starting from the supplied harmonized dataset; the code that built the dataset from the raw NHANES files is not included.
 
 Two variables in the dataset carry older labels that do not match the analysis. `hyperlipid_controlled` and `joint_ctrl_all3` are labelled with a non-HDL cholesterol threshold of <160 mg/dL. The scripts do not use them. They use `lipid_controlled` (non-HDL cholesterol <130 mg/dL) and construct joint control of all three conditions from `dm_controlled`, `htn_controlled` and `lipid_controlled`.
 
@@ -35,9 +35,11 @@ Weights: the PFQ era (cycles 1-7) uses `wt_pfq` and the DLQ era (cycles 8-10) us
 | `s5_fdr_correction.do` | Supplemental Table S5 (Benjamini-Hochberg false discovery rate) |
 | `s6_sensitivity_analyses.do` | Supplemental Table S6 (S6a to S6d) |
 | `s7_segmented_trends.do` | Supplemental Table S7 |
-| `s8_evalues.do` | Supplemental Table S8 and Supplemental Figure S3 (E-values) |
+| `s8_evalues.do` | Supplemental Table S8 (E-values; Supplemental Figure S3 plots these values) |
 | `s9_adjusted_trends.do` | Supplemental Table S9 (S9a to S9e) |
 | `s10_multiple_imputation_alcohol.do` | Supplemental Table S10 |
+
+Figure-generation code is not included.
 
 ## Citation
 
