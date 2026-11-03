@@ -19,8 +19,7 @@
 *
 * Weights: wt_pfq (PFQ era) and wt_dlq (DLQ era). N is the number of
 * participants with a positive examination weight and complete data on every
-* covariate in the model. Stata's e(N) (printed as n_eN) is larger because it
-* also counts interview-only participants with zero examination weight.
+* covariate in the model. n_eN is Stata's e(N) for the estimation sample.
 * Outcomes: n_rf is the number of risk factors (count outcome);
 * lipid_treated is statin use.
 * Design: strata SDMVSTRA, PSU SDMVPSU, singleunit(centered).
@@ -88,9 +87,8 @@ foreach p in a b c d e {
         quietly svy: poisson `outcome' c.cycle_ord i.age_grp i.riagendr ///
             i.ridreth1 i.educ3 i.marital3 i.ipir_cat smoking bmxbmi ///
             `insvar' if `cond'
-        * Stata's e(N) also counts interview-only participants with zero
-        * examination weight, who contribute nothing to the estimates.
         * N reported here = participants in the model with positive weight.
+        * n_eN = Stata's e(N) for the estimation sample.
         local nobs_eN = e(N)
         quietly count if e(sample) & `wt_`p'' > 0
         local nobs = r(N)
